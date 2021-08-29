@@ -1,12 +1,16 @@
-l1 = [1,2,4]
-l2 = [1,3,4]
+def getRow(self, rowIndex):
+    """
+    :type rowIndex: int
+    :rtype: List[int]
+    """
+    def paskal(num):
+        if num == 1:
+            return [1]
+        else:
+            front = paskal(num - 1) + [0]
+            back = [0] + paskal(num - 1)
+            return [front[i] + back[i] for i in range(len(front))]
+    return paskal(rowIndex+1)
 
-l1 = []
-l2 = [0]
 
-l2 = []
-
-
-l = l1+l2
-l.sort()
-print(l)
+print(getRow(0,4))
