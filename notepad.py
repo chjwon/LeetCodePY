@@ -1,15 +1,16 @@
-def maxArea(self, height) -> int:
-    def Area(left,right,inputList):
-        return abs(left-right) * min(inputList[left],inputList[right])
-    from itertools import combinations
-    comb = list(combinations(height,2))
-    print(comb)
-    max = 0
-    for i in range(len(comb)):
-        temp = Area(comb[i][0],comb[i][1],height)
-        print(temp)
-        if temp > max:
-            max = temp
-    return max
-ii = [1,1]
-print(maxArea(1,ii))
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+from typing import Optional
+
+
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+        return max(left,right)+1
